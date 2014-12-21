@@ -1,131 +1,139 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Medium Length Professional CV - RESUME CLASS FILE
+% Medium Length Professional CV
+% LaTeX Template
+% Version 2.0 (8/5/13)
 %
 % This template has been downloaded from:
 % http://www.LaTeXTemplates.com
 %
-% This class file defines the structure and design of the template. 
+% Original author:
+% Trey Hunner (http://www.treyhunner.com/)
 %
-% Original header:
-% Copyright (C) 2010 by Trey Hunner
-%
-% Copying and distribution of this file, with or without modification,
-% are permitted in any medium without royalty provided the copyright
-% notice and this notice are preserved. This file is offered as-is,
-% without any warranty.
-%
-% Created by Trey Hunner and modified by www.LaTeXTemplates.com
+% Copied shamelessly by lijin C http://github.com/lijinc
+% Important note:
+% This template requires the resume.cls file to be in the same directory as the
+% .tex file. The resume.cls file provides the resume style used for structuring the
+% document.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ProvidesClass{resume}[2010/07/10 v0.9 Resume class]
-
-\LoadClass[11pt,letterpaper]{article} % Font size and paper type
-
-\usepackage[parfill]{parskip} % Remove paragraph indentation
-\usepackage{array} % Required for boldface (\bf and \bfseries) tabular columns
-\usepackage{ifthen} % Required for ifthenelse statements
-
-\pagestyle{empty} % Suppress page numbers
-
 %----------------------------------------------------------------------------------------
-%	HEADINGS COMMANDS: Commands for printing name and address
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\def \name#1{\def\@name{#1}} % Defines the \name command to set name
-\def \@name {} % Sets \@name to empty by default
+\documentclass{resume} % Use the custom resume.cls style
 
-\def \addressSep {$\diamond$} % Set default address separator to a diamond
+\usepackage[left=0.75in,top=0.6in,right=0.75in,bottom=0.6in]{geometry} % Document margins
 
-% One, two or three address lines can be specified 
-\let \@addressone \relax
-\let \@addresstwo \relax
-\let \@addressthree \relax
+\name{LIJIN C} % Your name
+\address{Lijin Nivas, Cherattukuzhi, Malappuram, Kerala Pin:676519} % Your address
+\address{+91-7042506663, lijinc100@gmail.com, github.com/lijinc} % Your phone number and email
 
-% \address command can be used to set the first, second, and third address (last 2 optional)
-\def \address #1{
-  \@ifundefined{@addresstwo}{
-    \def \@addresstwo {#1}
-  }{
-  \@ifundefined{@addressthree}{
-  \def \@addressthree {#1}
-  }{
-     \def \@addressone {#1}
-  }}
-}
-
-% \printaddress is used to style an address line (given as input)
-\def \printaddress #1{
-  \begingroup
-    \def \\ {\addressSep\ }
-    \centerline{#1}
-  \endgroup
-  \par
-  \addressskip
-}
-
-% \printname is used to print the name as a page header
-\def \printname {
-  \begingroup
-    \hfil{\MakeUppercase{\namesize\bf \@name}}\hfil
-    \nameskip\break
-  \endgroup
-}
+\begin{document}
 
 %----------------------------------------------------------------------------------------
-%	PRINT THE HEADING LINES
+%	EDUCATION SECTION
 %----------------------------------------------------------------------------------------
 
-\let\ori@document=\document
-\renewcommand{\document}{
-  \ori@document  % Begin document
-  \printname % Print the name specified with \name
-  \@ifundefined{@addressone}{}{ % Print the first address if specified
-    \printaddress{\@addressone}}
-  \@ifundefined{@addresstwo}{}{ % Print the second address if specified
-    \printaddress{\@addresstwo}}
-     \@ifundefined{@addressthree}{}{ % Print the third address if specified
-    \printaddress{\@addressthree}}
-}
+\begin{rSection}{Education}
+
+{\bf National Institute of Technology, Calicut} \hfill {\em May 2014} \\ 
+Bachelor of Technology in Computer Science \& Engineering \\
+Overall GPA: 7.62/10
+
+{\bf Kendriya Vidyalaya, Malappuram} \hfill {\em April 2010} \\ 
+AISSCE, Class XII exam by CBSE \\
+Overall Percentage: 90.2
+
+{\bf Kendriya Vidyalaya, Malappuram} \hfill {\em April 2008} \\ 
+AISSE, Class X exam by CBSE \\
+Overall Percentage: 87.4
+\end{rSection}
 
 %----------------------------------------------------------------------------------------
-%	SECTION FORMATTING
+%	TECHNICAL STRENGTHS SECTION
 %----------------------------------------------------------------------------------------
 
-% Defines the rSection environment for the large sections within the CV
-\newenvironment{rSection}[1]{ % 1 input argument - section name
-  \sectionskip
-  \MakeUppercase{\bf #1} % Section title
-  \sectionlineskip
-  \hrule % Horizontal line
-  \begin{list}{}{ % List for each individual item in the section
-    \setlength{\leftmargin}{1.5em} % Margin within the section
-  }
-  \item[]
-}{
-  \end{list}
-}
+\begin{rSection}{Technical Strengths}
+
+\begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} l }
+Computer Languages & C, C++, Java \\
+Kernel programming & Linux kernel 3.11.0 \& 2.6.29 \\
+Tools & Eclipse-IDT, IDA Disassembler, Perforce.
+\end{tabular}
+
+\end{rSection}
 
 %----------------------------------------------------------------------------------------
-%	WORK EXPERIENCE FORMATTING
+%	WORK EXPERIENCE SECTION
 %----------------------------------------------------------------------------------------
 
-\newenvironment{rSubsection}[4]{ % 4 input arguments - company name, year(s) employed, job title and location
- {\bf #1} \hfill {#2} % Bold company name and date on the right
- \ifthenelse{\equal{#3}{}}{}{ % If the third argument is not specified, don't print the job title and location line
-  \\
-  {\em #3} \hfill {\em #4} % Italic job title and location
-  }\smallskip
-  \begin{list}{$\cdot$}{\leftmargin=0em} % \cdot used for bullets, no indentation
-   \itemsep -0.5em \vspace{-0.5em} % Compress items in list together for aesthetics
-  }{
-  \end{list}
-  \vspace{0.5em} % Some space after the list of bullet points
-}
+\begin{rSection}{Experience}
 
-% The below commands define the whitespace after certain things in the document - they can be \smallskip, \medskip or \bigskip
-\def\namesize{\huge} % Size of the name at the top of the document
-\def\addressskip{\smallskip} % The space between the two address (or phone/email) lines
-\def\sectionlineskip{\medskip} % The space above the horizontal line for each section 
-\def\nameskip{\bigskip} % The space after your name at the top
-\def\sectionskip{\medskip} % The space after the heading section
+{\bf Samsung R\&D Institute Noida, India} \hfill {June 2014 - Present}\\
+Performance Enhancement, maintenance and bug-fixing of Samsung android browsers.\\
+Implemented UI/UX changes for Android Lollipop.\\
+Handled bugs during Firmware Over The Air(FOTA) updates in Samsung Browsers.
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%	AREAS OF INTEREST SECTION
+%----------------------------------------------------------------------------------------
+
+%\begin{rSection}{Areas of Interest}
+%{Operating Systems} \\
+%{Computer Architecture}
+
+%\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%	PROJECTS SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{Projects}
+
+{\bf Design and Implementation of a New CPU Governor} \hfill {\em July 2013 - April 2014} \\ 
+A new CPU governor that enables user to save power when battery percentage goes below certain threshold value by lowering the CPU frequency and by reducing the time interval between the frequency switches.
+
+{\bf Android application to log theory hours missed by a student} \hfill {\em May 2012} \\ 
+An application that enables students to keep track of their attendance for their respective subjects and also set reminders so as to prevent attendance shortage issues that are common in collage life.
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%	PUBLICATIONS SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{PUBLICATIONS}
+
+Arjun Haris, Johns Paul, Lijin C, Jayaraj P B. Design and Implementation of a New CPU Governor-Power Aware Governor. In proceedings of 1st International Conference on Advances in Computing, Communications and Information Science, pages 454-461. Elsevier S\&T 2014.
+
+
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%	ACTIVITIES	SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{ACTIVITIES}
+
+{\bf Event manager of Befunge} \hfill {\em 2013} \\ 
+Organized Befunge, a 2 Dimensional Coding competition held at Tathva, Annual Techno-Management festival of NIT Calicut. 
+
+{\bf Participated in INCTF} \hfill {\em 2013} \\ 
+Completed as one of the finalists in INCTF, a national level CTF style coding contest held at Amrita University, Kollam.
+
+
+\end{rSection}
+%----------------------------------------------------------------------------------------
+%	EXAMPLE SECTION
+%----------------------------------------------------------------------------------------
+
+%\begin{rSection}{Section Name}
+
+%Section content\ldots
+
+%\end{rSection}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
